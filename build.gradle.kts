@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_1_8
 import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -80,10 +82,10 @@ tasks {
         options.release.set(targetJavaVersion.majorVersion.toInt())
     }
     withType<KotlinCompile>().configureEach {
-        kotlinOptions {
-            apiVersion = "1.8"
-            languageVersion = "1.8"
-            jvmTarget = targetJavaVersion.toString()
+        compilerOptions {
+            apiVersion.set(KOTLIN_1_8)
+            languageVersion.set(KOTLIN_1_8)
+            jvmTarget.set(JvmTarget.valueOf(targetJavaVersion.toString()))
         }
     }
     withType<Test>().configureEach {
