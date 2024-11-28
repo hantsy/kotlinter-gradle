@@ -45,7 +45,7 @@ configurations {
 }
 
 dependencies {
-    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin")
+    //compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin")
     compileOnly(libs.android.tools.gradle)
 
     implementation(libs.bundles.ktlint.engine)
@@ -85,7 +85,6 @@ tasks {
         compilerOptions {
             apiVersion.set(KOTLIN_1_8)
             languageVersion.set(KOTLIN_1_8)
-            jvmTarget.set(JvmTarget.valueOf(targetJavaVersion.toString()))
         }
     }
     withType<Test>().configureEach {
